@@ -1,0 +1,71 @@
+<app-user-navbar></app-user-navbar>
+<br><br>
+
+<body background="./assets/watercolor.webp">
+
+
+    <div class="row">
+        <div class="card col-md-4 offset-md-4 shadow-lg p-3 mb-5 bg-white">
+            <div class="container text-center mt">
+                <h4>Book Ticket</h4>
+                <form #ticketform="ngForm">
+
+                    <div class="row">
+                        <label for="passenegers" class="control-label">Passenegers</label>
+                        <Button name="button" (click)="addpass()">Add passenger</Button>
+                    </div>
+
+                    <div *ngIf="addPass">
+                        <div class="row">
+                            <input type="text" [(ngModel)]="passenger.passengername" placeholder="passengername"
+                                name="passengername"><br>
+                            <input type="text" placeholder="passnegerage" [(ngModel)]="passenger.passengerage"
+                                name="passenegerage"><br>
+                            <input type="text" placeholder="passengergender" [(ngModel)]="passenger.passengergender"
+                                name="passengergender">
+                        </div>
+                        <button value="OK" (click)="OK()">Add</button>
+                    </div>
+
+                    <br><br>
+                    <table *ngIf="showPass" >
+                        <tr>
+                            <th>Passengername</th>
+                            <th>Passenger age</th>
+                            <th>Passenger Gender</th>
+                        </tr>
+                        <tr *ngFor="let u of passengers; index as i">
+                            <td>{{u.passengername}}</td>
+                            <td>{{u.passengerage}}</td>
+                            <td>{{u.passengergender}}</td>
+            
+                        </tr>
+                    </table>
+
+                    <div class="row">
+                        <label for="seats" class="control-label">Seats</label>
+                        <input required #totalseats="ngModel" type="text" size="42" [(ngModel)]="ticket.totalseats"
+                            name="totalseats" (keyup.enter)="getTotal(totalseats.value)" />
+                        <div *ngIf="totalseats.invalid && totalseats.touched" class="alert alert-danger">No.of seats
+                            required
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label for="coupon" class="control-label">Coupon</label>
+                        <input #coupon type="text" size="42" [(ngModel)]="ticket.coupon" name="coupon"/>
+                        <button type="button" (click)="getcoupon(coupon.value)">Add Coupon</button>
+                    </div>
+                    <div class="a">
+                        <h6>Discount amount: {{discount}}</h6>
+                        <h5>GrandTotal {{ticket.totalprice}}</h5>
+                    </div>
+
+                    <br /><br />
+                    <button type="submit" [disabled]="!ticketform.form.valid" (click)="save()"
+                        class="btn btn-dark">Book</button>
+                    <button type="back" class="btn btn-dark"><a routerLink="/userhome" href="#">Back</a></button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>

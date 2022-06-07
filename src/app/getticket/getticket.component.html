@@ -1,0 +1,20 @@
+<app-user-navbar></app-user-navbar>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-white mb-5">
+                <div class="card-heading clearfix border-bottom mb-4">
+                    <h4 class="card-title">Booking Requests</h4>
+                </div>
+                <div class="card-body">
+                    <ul class="list-unstyled" *ngFor= "let u of tickets; index as i">
+                        <li class="position-relative booking">Ticket ID: {{u.ticketid}}</li>
+                            <li>Total Price: {{u.totalprice | currency }}</li>
+                            <li>Total Seats: {{u.totalseats}}</li>
+                            <li>Flight ID: {{u.flightid}} <button class="btn btn-danger" (click)="cancelTicket(u.ticketid)">Cancel</button></li>
+                    </ul>
+                    </div>
+                    </div>
+        </div>
+    </div>
+</div>

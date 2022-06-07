@@ -1,0 +1,32 @@
+<body background="./assets/watercolor.webp">
+    <div class="row">
+            <div class="container text-center mt">
+<br><br>
+<table >
+    <tr>
+        <th>Flight Id</th>
+        <th>Flight from</th>
+        <th>Flight to</th>
+        <th>starttime</th>
+        <th>endtime</th>
+        <th>seats</th>
+        <th>price</th>
+        <th>status</th>
+        <!-- <th>airlinefull</th> -->
+    </tr>
+    <tr *ngFor= "let u of flight; index as i" >
+        <td >{{u.flightid}}</td>
+        <td>{{u.flightfrom}}</td>
+        <td>{{u.flightto}}</td>
+        <td>{{u.starttime}}</td>
+        <td>{{u.endtime}}</td>
+        <td>{{u.seats}}</td>
+        <td>{{u.price}}</td>
+        <td>{{u.status}}</td>
+        <!-- <td>{{u.status}}</td> -->
+        <!-- <td>{{u.airlinefull}}</td> -->
+        <td><button (click)="deleteFlight(u.flightid)">Delete</button></td>
+    </tr>
+</table>
+<button type="back" class="btn btn-dark"><a routerLink="/adminhome"  href="#">Back</a></button>
+</div></div></body>
